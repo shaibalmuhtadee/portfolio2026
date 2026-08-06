@@ -1,0 +1,75 @@
+{
+  "name": "Shaibal Muhtadee",
+  "role": "Software Engineer — Backend & Full-Stack",
+  "headline": ["I build reliable", "software systems."],
+  "location": "Toronto, Ontario",
+  "availability": "Open to full-time software engineering roles across Canada and select U.S. opportunities, with a preference for backend and full-stack work.",
+  "workAuthorization": "Canadian citizen based in Toronto — open to Canada-wide remote and U.S. roles; prepared to seek TN status for qualifying USMCA professional positions, or employer-sponsored H-1B.",
+  "supportingCopy": "Toronto-based software engineer with 16 months at Zebra Technologies, including building authentication services that secured API access for more than 200 autonomous robots. I also co-developed an AI workspace that turns documents into editable entity graphs.",
+  "title": "Shaibal Muhtadee — Software Engineer",
+  "description": "Toronto software engineer focused on reliable backend and full-stack systems, with 16 months of experience at Zebra Technologies.",
+  "url": "https://shaibalmuhtadee.com",
+  "locale": "en_CA",
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/shaibalmuhtadee",
+    "github": "https://github.com/shaibalmuhtadee"
+  },
+  "about": {
+    "paragraphs": [
+      "I'm a Toronto-based software engineer interested in backend and full-stack work where reliability, performance, and product usability meet. My experience spans authentication services, developer tools, data pipelines, AI-assisted interfaces, and performance-sensitive systems in Rust, TypeScript, Python, and C++.",
+      "I like tracing problems across system boundaries, from APIs and storage to the interface people use, and validating decisions with tests, profiling, and before-and-after measurements. I'm looking for a team where I can own meaningful work, learn from experienced engineers, and ship software used in real operations."
+    ]
+  },
+  "education": [
+    {
+      "institution": "University of Toronto",
+      "degree": "Bachelor of Applied Science in Computer Engineering",
+      "location": "Toronto, Ontario",
+      "start": "2020-09",
+      "end": "2025-04"
+    }
+  ],
+  "skillGroups": [
+    {
+      "label": "Backend and systems",
+      "skills": [
+        "Rust",
+        "Python",
+        "TypeScript",
+        "C++",
+        "FastAPI",
+        "Flask",
+        "Node.js",
+        "REST APIs",
+        "WebSockets"
+      ]
+    },
+    {
+      "label": "Product and web",
+      "skills": ["React", "Next.js", "Flutter"]
+    },
+    {
+      "label": "Infrastructure",
+      "skills": ["Docker", "Kubernetes", "AWS", "Git"]
+    },
+    {
+      "label": "Data and AI",
+      "skills": [
+        "LangGraph",
+        "ChromaDB",
+        "MongoDB",
+        "Redis",
+        "SQLite",
+        "Vector embeddings",
+        "Semantic search"
+      ]
+    }
+  ],
+  "contact": {
+    "heading": "I'm looking for backend or full-stack work where reliability matters.",
+    "body": "If your team is hiring a software engineer who can move from APIs and data to the product surface, I'd be glad to connect."
+  },
+  "resume": {
+    "enabled": false
+  }
+}

@@ -1,0 +1,21 @@
+---
+import { formatMonth } from '../../lib/date';
+
+interface Props {
+  start: string;
+  end?: string | undefined;
+  current?: boolean | undefined;
+}
+
+const { start, end, current = false } = Astro.props;
+
+if (!current && !end) {
+  throw new Error('DateRange requires an end month unless the entry is current.');
+}
+---
+
+<span class="date-range">
+  <time datetime={start}>{formatMonth(start)}</time>
+  <span aria-hidden="true">—</span>
+  {current ? <span>Present</span> : <time datetime={end}>{formatMonth(end!)}</time>}
+</span>

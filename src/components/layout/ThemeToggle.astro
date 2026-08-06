@@ -1,0 +1,103 @@
+---
+import { Moon, Sun } from '@lucide/astro';
+---
+
+<button class="theme-toggle" type="button" data-theme-toggle aria-label="Dark mode">
+  <Moon class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true" size={18} />
+  <Sun class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true" size={18} />
+  <span data-theme-label>Dark mode</span>
+</button>
+
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    const button = document.querySelector('[data-theme-toggle]');
+    const label = button?.querySelector('[data-theme-label]');
+    const colorMeta = document.querySelector('#theme-color');
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if (!(button instanceof HTMLButtonElement) || !(label instanceof HTMLElement)) return;
+
+    const resolvedTheme = () => root.dataset.theme || (media.matches ? 'dark' : 'light');
+
+    const render = () => {
+      const activeTheme = resolvedTheme();
+      const targetTheme = activeTheme === 'dark' ? 'light' : 'dark';
+      const action = targetTheme === 'dark' ? 'Dark mode' : 'Light mode';
+
+      root.style.colorScheme = activeTheme;
+      button.dataset.targetTheme = targetTheme;
+      button.setAttribute('aria-label', action);
+      label.textContent = action;
+
+      if (colorMeta instanceof HTMLMetaElement) {
+        colorMeta.content = activeTheme === 'dark' ? '#07131f' : '#f8f8f6';
+      }
+    };
+
+    button.addEventListener('click', () => {
+      const nextTheme = resolvedTheme() === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = nextTheme;
+
+      try {
+        localStorage.setItem('shaibal-theme', nextTheme);
+      } catch {
+        // The in-memory selection still works when storage is blocked.
+      }
+
+      render();
+    });
+
+    media.addEventListener('change', () => {
+      if (!root.dataset.theme) render();
+    });
+
+    render();
+  })();
+</script>
+
+<style>
+  .theme-toggle {
+    display: none;
+    min-block-size: 2.75rem;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-control);
+    color: var(--color-accent-strong);
+    background: transparent;
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 650;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  :global(html.js) .theme-toggle {
+    display: inline-flex;
+  }
+
+  .theme-toggle:hover {
+    background: var(--color-accent-soft);
+  }
+
+  .theme-toggle__icon--sun,
+  .theme-toggle[data-target-theme='dark'] .theme-toggle__icon--sun {
+    display: none;
+  }
+
+  .theme-toggle[data-target-theme='light'] .theme-toggle__icon--sun {
+    display: block;
+  }
+
+  .theme-toggle[data-target-theme='light'] .theme-toggle__icon--moon {
+    display: none;
+  }
+
+  @media (forced-colors: active) {
+    .theme-toggle {
+      border-color: ButtonText;
+    }
+  }
+</style>

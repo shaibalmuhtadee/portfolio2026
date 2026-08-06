@@ -1,0 +1,72 @@
+---
+import DateRange from '../ui/DateRange.astro';
+import type { PortfolioSectionProps } from './types';
+
+type Props = PortfolioSectionProps;
+
+const { section, content } = Astro.props;
+---
+
+<section id={section.id} class="evidence__section" aria-labelledby={`${section.id}-title`}>
+  <h2 id={`${section.id}-title`}>{section.label}</h2>
+
+  <div class="project-list">
+    {
+      content.featuredProjects.map(({ data }) => (
+        <article class="project-entry">
+          <header class="project-entry__heading">
+            <h3>{data.title}</h3>
+            <p class="project-entry__meta">
+              <span>Private project</span>
+              <span aria-hidden="true">·</span>
+              <DateRange start={data.start} end={data.end} current={data.current} />
+            </p>
+          </header>
+
+          <div class="project-entry__body">
+            <div>
+              <p class="project-entry__summary">{data.summary}</p>
+              <p class="project-entry__contribution">
+                <strong>Contribution.</strong> {data.contribution}
+              </p>
+            </div>
+            <div>
+              <ul class="project-entry__decisions" aria-label={`${data.title} technical decisions`}>
+                {data.decisions.map((decision) => (
+                  <li>{decision}</li>
+                ))}
+              </ul>
+              <p class="project-entry__evidence">
+                <strong>{data.supportedOutcome ? 'Evidence.' : 'Status.'}</strong>{' '}
+                {data.supportedOutcome ?? data.statusNote}
+              </p>
+            </div>
+          </div>
+          <p class="technology-line">{data.technologies.join(' · ')}</p>
+        </article>
+      ))
+    }
+  </div>
+
+  {
+    content.additionalProjects.length > 0 && (
+      <div class="additional-work">
+        <h3>Additional work</h3>
+        {content.additionalProjects.map(({ data }) => (
+          <article class="additional-project">
+            <div class="additional-project__heading">
+              <h4>{data.title}</h4>
+              <DateRange start={data.start} end={data.end} current={data.current} />
+            </div>
+            <p>{data.summary}</p>
+            <p class="technology-line">{data.technologies.join(' · ')}</p>
+          </article>
+        ))}
+      </div>
+    )
+  }
+
+  <p class="private-note">
+    Source code and demos are private; descriptions are limited to publishable work.
+  </p>
+</section>

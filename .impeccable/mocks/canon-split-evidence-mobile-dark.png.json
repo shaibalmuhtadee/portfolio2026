@@ -1,0 +1,9 @@
+{
+  "prompt": "See canon-split-evidence-mobile-dark.prompt.txt and the PNG's embedded impeccable:prompt metadata.",
+  "promptFile": "canon-split-evidence-mobile-dark.prompt.txt",
+  "createdAt": "2026-08-05",
+  "tool": "OpenAI built-in image generation",
+  "approved": true,
+  "approvalBasis": "Shaibal approved the mobile dark-theme adaptation on 2026-08-06.",
+  "derivedFromApproved": "canon-split-evidence-approved.png"
+}

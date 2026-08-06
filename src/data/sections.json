@@ -1,0 +1,34 @@
+[
+  {
+    "id": "experience",
+    "label": "Experience",
+    "order": 1,
+    "enabled": true,
+    "navVisible": false,
+    "contentSource": "experience"
+  },
+  {
+    "id": "work",
+    "label": "Selected work",
+    "order": 2,
+    "enabled": true,
+    "navVisible": false,
+    "contentSource": "project"
+  },
+  {
+    "id": "about",
+    "label": "About",
+    "order": 3,
+    "enabled": true,
+    "navVisible": false,
+    "contentSource": "site"
+  },
+  {
+    "id": "contact",
+    "label": "Contact",
+    "order": 4,
+    "enabled": true,
+    "navVisible": false,
+    "contentSource": "site"
+  }
+]

@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/figtree/wght.css';
+
+import DocumentHead from '../components/layout/DocumentHead.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <DocumentHead {...props} />
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        let storedTheme = null;
+
+        try {
+          const value = localStorage.getItem('shaibal-theme');
+          if (value === 'light' || value === 'dark') storedTheme = value;
+        } catch {
+          // System preference remains the fallback when storage is unavailable.
+        }
+
+        if (storedTheme) root.dataset.theme = storedTheme;
+        root.classList.add('js');
+
+        const activeTheme =
+          storedTheme ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        root.style.colorScheme = activeTheme;
+
+        const colorMeta = document.querySelector('#theme-color');
+        if (colorMeta instanceof HTMLMetaElement) {
+          colorMeta.content = activeTheme === 'dark' ? '#07131f' : '#f8f8f6';
+        }
+      })();
+    </script>
+    <slot name="head" />
+  </head>
+  <body
+    ><!--
+THESIS: Split identity and proof into one recruiter scan; refuse the separate navbar, generic hero, and card-grid portfolio stack.
+OWN-WORLD: Flat daylight and blue-charcoal fields, deep ink or off-white type, restrained blue accents, pale hairline rules, clean grotesk type, editorial rows, outlined secondary controls, no cards or shadows.
+STORY: Visitors identify Shaibal's backend/full-stack fit, see Zebra production evidence and private-project judgment, then view experience or continue to Resume, LinkedIn, and GitHub.
+FIRST VIEWPORT: Desktop is 38% identity rail and 62% evidence stream; a large claim and actions sit left, while Zebra and opening project rows begin right. View experience is primary beneath availability.
+FORM: Split Evidence, composition 1 of 3; canon standing-exit world; seed key 8b14ca40.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <slot />
+  </body>
+</html>

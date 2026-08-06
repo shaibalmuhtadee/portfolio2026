@@ -1,0 +1,28 @@
+---
+import IdentityPanel from '../components/layout/IdentityPanel.astro';
+import { sectionRegistry } from '../components/sections/registry';
+import { sections } from '../data/sections';
+import { site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPortfolioContent } from '../lib/content';
+import '../styles/home.css';
+
+const content = await getPortfolioContent();
+const enabledSections = sections.filter(({ enabled }) => enabled);
+const experienceSection = enabledSections.find(({ id }) => id === 'experience');
+---
+
+<BaseLayout canonicalPath="/">
+  <main id="main-content" class="portfolio">
+    <IdentityPanel site={site} experienceHref={experienceSection ? '#experience' : undefined} />
+
+    <div class="evidence">
+      {
+        enabledSections.map((section) => {
+          const SectionComponent = sectionRegistry[section.id];
+          return <SectionComponent section={section} content={content} site={site} />;
+        })
+      }
+    </div>
+  </main>
+</BaseLayout>

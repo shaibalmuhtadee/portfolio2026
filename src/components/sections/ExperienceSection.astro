@@ -1,0 +1,39 @@
+---
+import DateRange from '../ui/DateRange.astro';
+import type { PortfolioSectionProps } from './types';
+
+type Props = PortfolioSectionProps;
+
+const { section, content } = Astro.props;
+---
+
+<section id={section.id} class="evidence__section" aria-labelledby={`${section.id}-title`}>
+  <h2 id={`${section.id}-title`}>{section.label}</h2>
+
+  <div class="experience-list">
+    {
+      content.experience.map(({ data }) => (
+        <article class="experience-entry">
+          <header class="experience-entry__heading">
+            <h3>{data.company}</h3>
+            <p class="experience-entry__meta">
+              <span>{data.role}</span>
+              <span aria-hidden="true">·</span>
+              <span>{data.location}</span>
+              <span aria-hidden="true">·</span>
+              <DateRange start={data.start} end={data.end} current={data.current} />
+            </p>
+          </header>
+
+          <p class="experience-entry__summary">{data.summary}</p>
+          <ul class="experience-entry__highlights">
+            {data.highlights.map((highlight) => (
+              <li>{highlight}</li>
+            ))}
+          </ul>
+          <p class="technology-line">{data.technologies.join(' · ')}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

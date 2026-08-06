@@ -1,0 +1,35 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import { siGithub } from 'simple-icons';
+
+import BrandIcon from '../ui/BrandIcon.astro';
+import type { PortfolioSectionProps } from './types';
+
+type Props = PortfolioSectionProps;
+
+const { section, site } = Astro.props;
+---
+
+<section
+  id={section.id}
+  class="evidence__section contact-section"
+  aria-labelledby={`${section.id}-title`}
+>
+  <h2 id={`${section.id}-title`}>{section.label}</h2>
+  <h3>{site.contact.heading}</h3>
+  <p class="contact-section__body">{site.contact.body}</p>
+  <p class="contact-section__availability">{site.availability}</p>
+  <p class="contact-section__authorization">{site.workAuthorization}</p>
+
+  <div class="contact-actions">
+    <a class="contact-actions__primary" href={site.social.linkedin}>
+      <span class="linkedin-mark" aria-hidden="true">in</span>
+      <span>Connect on LinkedIn</span>
+      <ArrowUpRight aria-hidden="true" size={20} stroke-width={2.2} />
+    </a>
+    <a class="contact-actions__secondary" href={site.social.github}>
+      <BrandIcon icon={siGithub} size={21} />
+      <span>View GitHub profile</span>
+    </a>
+  </div>
+</section>

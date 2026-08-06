@@ -1,0 +1,88 @@
+:root {
+  color-scheme: light;
+  --color-page: #f8f8f6;
+  --color-surface: #ffffff;
+  --color-text: #111a24;
+  --color-muted: #566373;
+  --color-accent: #0b5ebc;
+  --color-accent-strong: #064f9f;
+  --color-accent-soft: #e7f1fc;
+  --color-border: #d5dce4;
+  --color-focus: #004a99;
+  --color-button: #0b5ebc;
+  --color-button-hover: #084d9c;
+  --color-on-button: #ffffff;
+  --color-brand-linkedin: #0a66c2;
+
+  --font-sans: 'Figtree Variable', 'Figtree', sans-serif;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.94rem);
+  --step-0: clamp(1rem, 0.96rem + 0.22vw, 1.13rem);
+  --step-1: clamp(1.25rem, 1.13rem + 0.58vw, 1.56rem);
+  --step-2: clamp(1.65rem, 1.4rem + 1.2vw, 2.35rem);
+  --step-3: clamp(2.2rem, 1.72rem + 2.35vw, 3.65rem);
+  --step-4: clamp(3.25rem, 2.55rem + 3vw, 4.5rem);
+
+  --space-1: 0.35rem;
+  --space-2: 0.65rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.25rem;
+  --space-6: 3.5rem;
+  --space-7: 5.5rem;
+  --radius-control: 0.3rem;
+  --content-max: 94rem;
+  --text-measure: 70ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --color-page: #07131f;
+    --color-surface: #0b1928;
+    --color-text: #f4f7fb;
+    --color-muted: #a8b7c9;
+    --color-accent: #5ca3ff;
+    --color-accent-strong: #78b4ff;
+    --color-accent-soft: #122f4d;
+    --color-border: #31485f;
+    --color-focus: #91c2ff;
+    --color-button: #1474dc;
+    --color-button-hover: #0d5eae;
+    --color-on-button: #ffffff;
+    --color-brand-linkedin: #0a66c2;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-page: #07131f;
+  --color-surface: #0b1928;
+  --color-text: #f4f7fb;
+  --color-muted: #a8b7c9;
+  --color-accent: #5ca3ff;
+  --color-accent-strong: #78b4ff;
+  --color-accent-soft: #122f4d;
+  --color-border: #31485f;
+  --color-focus: #91c2ff;
+  --color-button: #1474dc;
+  --color-button-hover: #0d5eae;
+  --color-on-button: #ffffff;
+  --color-brand-linkedin: #0a66c2;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --color-page: #f8f8f6;
+  --color-surface: #ffffff;
+  --color-text: #111a24;
+  --color-muted: #566373;
+  --color-accent: #0b5ebc;
+  --color-accent-strong: #064f9f;
+  --color-accent-soft: #e7f1fc;
+  --color-border: #d5dce4;
+  --color-focus: #004a99;
+  --color-button: #0b5ebc;
+  --color-button-hover: #084d9c;
+  --color-on-button: #ffffff;
+  --color-brand-linkedin: #0a66c2;
+}

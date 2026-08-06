@@ -1,0 +1,67 @@
+---
+import { ArrowRight, BriefcaseBusiness, FileText, MapPin } from '@lucide/astro';
+import { siGithub } from 'simple-icons';
+
+import type { SiteConfig } from '../../data/site';
+import BrandIcon from '../ui/BrandIcon.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  site: SiteConfig;
+  experienceHref?: string | undefined;
+}
+
+const { site, experienceHref } = Astro.props;
+---
+
+<header class="identity">
+  <strong class="identity__name">{site.name}</strong>
+  <p class="identity__role">{site.role}</p>
+  <h1 aria-label={site.headline.join(' ')}>
+    {site.headline.map((line) => <span>{line}</span>)}
+  </h1>
+  <p class="identity__intro">{site.supportingCopy}</p>
+
+  <ul class="identity__facts" aria-label="Location and availability">
+    <li>
+      <MapPin aria-hidden="true" size={21} stroke-width={2} />
+      <span>{site.location}</span>
+    </li>
+    <li>
+      <BriefcaseBusiness aria-hidden="true" size={21} stroke-width={2} />
+      <span>Open to full-time software engineering roles</span>
+    </li>
+  </ul>
+
+  {
+    experienceHref && (
+      <a class="primary-action" href={experienceHref}>
+        <span>View experience</span>
+        <ArrowRight aria-hidden="true" size={20} stroke-width={2.2} />
+      </a>
+    )
+  }
+
+  <nav class="identity__social" aria-label="Professional profiles">
+    <a href={site.social.linkedin}>
+      <span class="linkedin-mark" aria-hidden="true">in</span>
+      <span>LinkedIn</span>
+    </a>
+    <a href={site.social.github}>
+      <BrandIcon icon={siGithub} size={23} />
+      <span>GitHub</span>
+    </a>
+  </nav>
+
+  <div class="identity__utilities">
+    {
+      site.resume.enabled && (
+        <a class="resume-action" href={site.resume.path}>
+          <FileText aria-hidden="true" size={19} stroke-width={2} />
+          <span>Resume</span>
+        </a>
+      )
+    }
+    <ThemeToggle />
+  </div>
+</header>
