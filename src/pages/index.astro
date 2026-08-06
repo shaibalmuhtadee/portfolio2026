@@ -9,12 +9,11 @@ import '../styles/home.css';
 
 const content = await getPortfolioContent();
 const enabledSections = sections.filter(({ enabled }) => enabled);
-const experienceSection = enabledSections.find(({ id }) => id === 'experience');
 ---
 
 <BaseLayout canonicalPath="/">
   <div class="portfolio">
-    <IdentityPanel site={site} experienceHref={experienceSection ? '#experience' : undefined} />
+    <IdentityPanel site={site} resumeHref={site.resume.path} />
 
     <main id="main-content" class="evidence">
       {

@@ -1,7 +1,7 @@
 {
   "name": "Shaibal Muhtadee",
-  "role": "Software Engineer — Backend & Full-Stack",
-  "headline": ["I build reliable", "software systems."],
+  "role": "Software Engineer",
+  "headline": "I build reliable software systems",
   "location": "Toronto, Ontario",
   "eligibilitySummary": "Canada-wide; open to qualifying U.S. roles through TN status or employer-sponsored H-1B",
   "availability": "Open to full-time software engineering roles across Canada and select U.S. opportunities, with a preference for backend and full-stack work.",
@@ -55,7 +55,7 @@
     },
     {
       "label": "Infrastructure",
-      "skills": ["Docker", "Kubernetes", "AWS", "Git"]
+      "skills": ["Git", "Docker", "Kubernetes", "AWS"]
     },
     {
       "label": "Data and AI",
@@ -74,6 +74,6 @@
     "body": "If your team is hiring a software engineer who can move from APIs and data to the product surface, I'd be glad to connect."
   },
   "resume": {
-    "enabled": false
+    "path": "/resume/shaibal-muhtadee-resume.pdf"
   }
 }

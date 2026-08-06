@@ -14,7 +14,7 @@ export const siteSchema = z
   .object({
     name: text,
     role: text,
-    headline: z.tuple([text, text]),
+    headline: text,
     location: text,
     eligibilitySummary: text,
     availability: text,
@@ -78,17 +78,13 @@ export const siteSchema = z
         body: text,
       })
       .strict(),
-    resume: z.discriminatedUnion('enabled', [
-      z.object({ enabled: z.literal(false) }).strict(),
-      z
-        .object({
-          enabled: z.literal(true),
-          path: z
-            .string()
-            .regex(/^\/resume\/[a-z0-9][a-z0-9._-]*\.pdf$/, 'Use a local PDF under /resume/.'),
-        })
-        .strict(),
-    ]),
+    resume: z
+      .object({
+        path: z
+          .string()
+          .regex(/^\/resume\/[a-z0-9][a-z0-9._-]*\.pdf$/, 'Use a local PDF under /resume/.'),
+      })
+      .strict(),
   })
   .strict();
 
