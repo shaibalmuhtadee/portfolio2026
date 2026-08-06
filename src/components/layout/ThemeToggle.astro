@@ -7,12 +7,14 @@ import { Moon, Sun } from '@lucide/astro';
   <Sun class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true" size={18} />
   <span data-theme-label>Dark mode</span>
 </button>
+<span class="visually-hidden" data-theme-status aria-live="polite"></span>
 
 <script is:inline>
   (() => {
     const root = document.documentElement;
     const button = document.querySelector('[data-theme-toggle]');
     const label = button?.querySelector('[data-theme-label]');
+    const status = document.querySelector('[data-theme-status]');
     const colorMeta = document.querySelector('#theme-color');
     const media = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -46,6 +48,9 @@ import { Moon, Sun } from '@lucide/astro';
       }
 
       render();
+      if (status instanceof HTMLElement) {
+        status.textContent = `${nextTheme === 'dark' ? 'Dark' : 'Light'} theme active`;
+      }
     });
 
     media.addEventListener('change', () => {
@@ -79,6 +84,11 @@ import { Moon, Sun } from '@lucide/astro';
   }
 
   .theme-toggle:hover {
+    background: var(--color-accent-soft);
+  }
+
+  .theme-toggle:active {
+    color: var(--color-text);
     background: var(--color-accent-soft);
   }
 

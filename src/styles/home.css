@@ -2,7 +2,6 @@
   inline-size: min(100%, var(--content-max));
   min-block-size: 100vh;
   margin-inline: auto;
-  border-block-start: 1px solid var(--color-border);
 }
 
 .identity,
@@ -115,6 +114,11 @@
   background: var(--color-button-hover);
 }
 
+.primary-action:active,
+.contact-actions__primary:active {
+  background: var(--color-button-active);
+}
+
 .primary-action svg,
 .contact-actions__primary svg:last-child {
   transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -176,6 +180,13 @@
 }
 
 .resume-action:hover {
+  background: var(--color-accent-soft);
+}
+
+.resume-action:active,
+.identity__social a:active,
+.contact-actions__secondary:active {
+  color: var(--color-text);
   background: var(--color-accent-soft);
 }
 
@@ -257,6 +268,14 @@
   max-inline-size: var(--text-measure);
   margin: var(--space-4) 0 0;
   font-weight: 600;
+}
+
+.proof-label {
+  color: var(--color-accent-strong);
+  font-size: var(--step--1);
+  font-weight: 760;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
 }
 
 .experience-entry__highlights,
@@ -386,6 +405,10 @@
   font-size: var(--step--1);
 }
 
+.private-note--lead {
+  margin: -1rem 0 var(--space-5);
+}
+
 .about-copy {
   display: grid;
   gap: var(--space-4);
@@ -473,12 +496,6 @@
   }
 }
 
-@media (min-width: 22.5rem) and (max-width: 63.99rem) {
-  .identity h1 span {
-    white-space: nowrap;
-  }
-}
-
 @media (max-width: 23.75rem) {
   .identity {
     padding-inline: 1rem;
@@ -490,6 +507,23 @@
 
   .identity h1 {
     font-size: 2.55rem;
+  }
+
+  .identity__intro {
+    margin-block-start: 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.42;
+  }
+
+  .primary-action {
+    min-block-size: 3rem;
+    margin-block-start: var(--space-4);
+  }
+
+  .identity__facts {
+    gap: var(--space-2);
+    margin-block-start: var(--space-4);
+    font-size: var(--step--1);
   }
 
   .identity__social {
@@ -553,10 +587,6 @@
     font-size: clamp(2.625rem, 4vw, 3.75rem);
   }
 
-  .identity h1 span {
-    white-space: nowrap;
-  }
-
   .identity__intro {
     margin-block-start: var(--space-4);
     font-size: var(--step--1);
@@ -565,11 +595,13 @@
 
   .identity__facts {
     margin-block-start: var(--space-5);
+    order: 6;
   }
 
   .primary-action {
     inline-size: min(100%, 20rem);
     margin-block-start: var(--space-5);
+    order: 5;
   }
 
   .identity__social {
@@ -578,6 +610,7 @@
     margin-block-start: var(--space-5);
     padding-block-start: var(--space-4);
     border-block-start: 1px solid var(--color-border);
+    order: 7;
   }
 
   .identity__social a {
@@ -591,6 +624,7 @@
     justify-content: flex-start;
     inline-size: 100%;
     margin-block-start: var(--space-2);
+    order: 8;
   }
 
   .resume-action {
@@ -641,7 +675,7 @@
 
 @media (min-width: 64rem) and (max-height: 50rem) {
   .identity {
-    padding-block: 2rem;
+    padding-block: 1.5rem;
   }
 
   .identity__name {
@@ -649,23 +683,41 @@
   }
 
   .identity h1 {
-    margin-block-start: var(--space-4);
-    font-size: 3.5rem;
+    margin-block-start: var(--space-3);
+    font-size: clamp(2.35rem, 3.5vw, 3.25rem);
   }
 
   .identity__intro {
-    font-size: 0.9rem;
-    line-height: 1.42;
+    margin-block-start: 0.75rem;
+    font-size: 0.84rem;
+    line-height: 1.36;
   }
 
   .identity__facts,
   .primary-action,
   .identity__social {
-    margin-block-start: var(--space-4);
+    margin-block-start: var(--space-3);
+  }
+
+  .identity__facts {
+    gap: var(--space-2);
+    font-size: 0.9rem;
   }
 
   .identity__social {
     flex-direction: row;
     gap: var(--space-5);
+    padding-block-start: 0.75rem;
+  }
+
+  .identity__utilities {
+    margin-block-start: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary-action svg,
+  .contact-actions__primary svg:last-child {
+    transition: none;
   }
 }

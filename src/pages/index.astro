@@ -13,16 +13,16 @@ const experienceSection = enabledSections.find(({ id }) => id === 'experience');
 ---
 
 <BaseLayout canonicalPath="/">
-  <main id="main-content" class="portfolio">
+  <div class="portfolio">
     <IdentityPanel site={site} experienceHref={experienceSection ? '#experience' : undefined} />
 
-    <div class="evidence">
+    <main id="main-content" class="evidence">
       {
         enabledSections.map((section) => {
           const SectionComponent = sectionRegistry[section.id];
           return <SectionComponent section={section} content={content} site={site} />;
         })
       }
-    </div>
-  </main>
+    </main>
+  </div>
 </BaseLayout>

@@ -1,6 +1,6 @@
 # Shaibal Muhtadee portfolio build document
 
-- Status: Phase 3 complete; Phase 4 awaits checkpoint approval
+- Status: Phases 4 and 5 implemented; required release-gate rerun is blocked by the local sandbox
 - Last updated: August 6, 2026
 - Deployment: intentionally deferred
 
@@ -515,20 +515,48 @@ Exit: all real content is present, every action works, and no placeholder surviv
 
 ### Phase 4 - Responsive and accessible pass
 
-- Test content-driven breakpoints and long text.
-- Complete keyboard, focus, semantics, alt text, contrast, reduced-motion, forced-colors, zoom, and reflow work.
-- Run Impeccable critique, audit, and adapt passes.
+- [x] Apply content-driven small-phone spacing, safe-area handling, and a faster mobile scan order.
+- [x] Put the Canada/U.S. eligibility summary in the identity rail and move the private-project disclosure before the projects.
+- [x] Add banner/main landmarks, skip-link and fragment focus targets, accessible date separators, theme-change announcements, native tap acknowledgment, active states, and a reusable proof-label pattern.
+- [x] Replace the blanket reduced-motion override with a targeted alternative and preserve forced-colors behavior.
+- [x] Add automated coverage for light/dark axe scans, keyboard order, skip and fragment focus, 44-pixel controls, 320-pixel CTA visibility, 320-to-2560 reflow, text-spacing overrides, reduced motion, forced colors, headings, and landmarks.
+- [x] Run the required independent Impeccable critique assessments and code audit/adapt work.
 
-Exit: automated accessibility checks pass and the manual matrix has no open high-impact issue.
+Phase 4 implementation report, August 6, 2026:
+
+- Assessment A scored the applicable Nielsen heuristics 26/32. Its main findings were late work-authorization context, a slow small-phone opening, a dense project middle, missing touch feedback, and a weak repeatable evidence signature. Those clear findings were addressed without adding cards, navigation, hidden content, or decorative media.
+- Assessment B ran the deterministic detector exactly once against `src/pages/index.astro` and returned zero findings. The scan is narrow because the target imports the rendered components and styles.
+- The combined critique is stored at `.impeccable/critique/2026-08-06T16-08-34Z__src-pages-index-astro.md` with the requested stable slug and trend metadata.
+- Calculated contrast ratios range from 5.76:1 to 17.42:1 for body, muted, accent, and focus text/surfaces. The lowest normal-text control pair is the dark primary button at 4.60:1. Active primary buttons now use a dedicated darker token rather than the light-blue accent.
+- Both fresh in-app browser critique attempts were blocked by the browser security policy before localhost loaded. No live overlay or screenshot was claimed.
+- The new automated suite could not run in this Codex sandbox: Astro, Prettier, ESLint, TypeScript/Astro check, and Playwright package files are pnpm hardlinks that the process cannot open (`EPERM`). An escalated build was also rejected because the local Codex account had exhausted its approval/usage allowance. This is an environment failure, not a passing test result.
+- Real Safari, iOS Safari, Android Chrome, NVDA, and VoiceOver remain release-candidate checks requiring a real device, simulator, or cloud browser. Playwright Firefox and WebKit projects are configured as preflight coverage, not substitutes for real Safari.
+
+Exit status: implementation is complete, but the Phase 4 exit condition is not proven until the expanded automated suite and manual browser/screen-reader matrix run successfully outside the blocked sandbox.
 
 ### Phase 5 - Performance and search pass
 
-- Optimize images and font subsets.
-- Add SEO, social metadata, structured data, sitemap, and link checks.
-- Run Lighthouse CI and enforce transfer budgets.
-- Run Impeccable optimize only against measured problems.
+- [x] Add complete Open Graph and Twitter image metadata, crawler directives, canonical sitemap discovery, privacy-safe `ProfilePage`/`Person` JSON-LD, and a verified 1200×630 PNG social card.
+- [x] Generate `sitemap.xml` from every built indexable HTML route and generate `robots.txt` from Astro's configured site URL.
+- [x] Add build guards for metadata, structured data, crawler files, social-image type/dimensions, privacy, and executable-inline-JavaScript size.
+- [x] Add local/fragment/structured-data link validation plus a bounded external-link mode that reports bot-protected checks as inconclusive.
+- [x] Add a dependency-free fixed production server with deterministic gzip level 9, real 404s, immutable hashed-asset caching, and no SPA fallback.
+- [x] Add served-network transfer assertions for every built route and five-run median Lighthouse CI configurations for mobile and desktop.
+- [x] Pin the Node, pnpm, Playwright, and browser-install inputs already owned by the repository; configure CI to print versions and upload Lighthouse reports.
+- [x] Optimize only measured problems. The current self-hosted Figtree files already use `font-display: swap` and Unicode ranges; the English route requests the 20,156-byte Latin WOFF2, so removing Latin-ext output would reduce disk size without a measured initial-transfer benefit. No preload was added.
 
-Exit: every lab and resource gate passes on the production build.
+Phase 5 implementation report, August 6, 2026:
+
+- Before Phase 5, the generated snapshot was 65,899 raw bytes across HTML, CSS, two font subsets, and the favicon. Local gzip diagnostics were 6,098 bytes for HTML and 3,627 bytes for CSS; the likely initial payload was about 30 KB because the English page selects only the Latin font range.
+- The social card is 45,883 bytes, 1200×630, and is referenced only by metadata, so it is not part of the normal page load.
+- The fixed server was smoke-tested against the existing Phase 3 `dist`: it served the HTML with `Content-Encoding: gzip` and a 6,098-byte compressed body, and the dependency-free local/fragment link checker passed that one-route snapshot. These results validate the infrastructure only; they are not final Phase 5 measurements.
+- The final production build, served transfer budgets, axe/browser suite, and five mobile plus five desktop Lighthouse runs could not execute for the same pnpm-hardlink `EPERM` sandbox failure described above. The Lighthouse runner failed before collection when Playwright's installed package entry point could not be opened.
+- The required lockfile pin for `@lhci/cli@0.15.1` remains unmet. A lockfile-only pnpm add retried registry access and timed out with `EACCES`; escalated network/package access was unavailable. The committed runner uses the exact `0.15.1` package through `pnpm dlx` so CI is deterministic by version, but this does not satisfy the stricter lockfile requirement.
+- Automated external fetches failed because outbound network access is blocked. Web verification found the GitHub profile and an indexed LinkedIn profile, but LinkedIn could not be fetched directly. The GitHub profile is live but its public bio/README still says “4th Year Computer Engineering Student” and “aspiring web developer”; update that before deployment because it conflicts with the portfolio's graduate/software-engineer positioning.
+- Syntax checks pass for every new Node/CJS script, the sitemap generator emits the canonical home URL, PNG dimensions and visual layout were verified, the fixed gzip server starts correctly, the local link checker runs, and `git diff --check` is clean.
+- Field Core Web Vitals remain pending deployment and sufficient traffic. Lighthouse is a lab gate and cannot prove the 75th-percentile field result.
+
+Exit status: Phase 5 implementation is complete, but its exit condition is not proven. Rerun `pnpm install --frozen-lockfile`, add and lock `@lhci/cli@0.15.1`, then run `pnpm test:release` in an unrestricted environment. Do not begin Phase 6 until formatting, lint, Astro check/build, all configured browsers, served budgets, and both Lighthouse matrices pass.
 
 ### Phase 6 - Final review
 
@@ -568,6 +596,7 @@ Neither item blocks Phases 4 through 6. Resume enablement and its final link che
 - [Astro content collections](https://docs.astro.build/en/guides/content-collections/)
 - [Astro images](https://docs.astro.build/en/guides/images/)
 - [Lighthouse CI configuration](https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md)
+- [Google ProfilePage structured data](https://developers.google.com/search/docs/appearance/structured-data/profile-page)
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/)
 - [U.S. State Department TN guidance](https://travel.state.gov/content/travel/en/us-visas/employment/visas-canadian-mexican-usmca-professional-workers.html)
 - [CBP Canadian TN procedure](https://www.help.cbp.gov/s/article/Article-1723?language=en_US)

@@ -14,8 +14,8 @@ concurrency:
 
 jobs:
   verify:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
 
     steps:
       - name: Check out repository
@@ -36,6 +36,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Report tool versions
+        run: |
+          node --version
+          pnpm --version
+
       - name: Check formatting
         run: pnpm format:check
 
@@ -51,8 +56,22 @@ jobs:
       - name: Build and verify static output
         run: pnpm build
 
-      - name: Install Chromium
-        run: pnpm exec playwright install --with-deps chromium
+      - name: Check local links and generated crawler files
+        run: pnpm check:links
+
+      - name: Install browser matrix
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
 
       - name: Run browser tests
         run: pnpm exec playwright test
+
+      - name: Run mobile and desktop Lighthouse gates
+        run: pnpm test:lighthouse
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouse-reports
+          if-no-files-found: ignore

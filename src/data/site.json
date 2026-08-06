@@ -3,6 +3,7 @@
   "role": "Software Engineer — Backend & Full-Stack",
   "headline": ["I build reliable", "software systems."],
   "location": "Toronto, Ontario",
+  "eligibilitySummary": "Canada-wide; open to qualifying U.S. roles through TN status or employer-sponsored H-1B",
   "availability": "Open to full-time software engineering roles across Canada and select U.S. opportunities, with a preference for backend and full-stack work.",
   "workAuthorization": "Canadian citizen based in Toronto — open to Canada-wide remote and U.S. roles; prepared to seek TN status for qualifying USMCA professional positions, or employer-sponsored H-1B.",
   "supportingCopy": "Toronto-based software engineer with 16 months at Zebra Technologies, including building authentication services that secured API access for more than 200 autonomous robots. I also co-developed an AI workspace that turns documents into editable entity graphs.",
@@ -10,6 +11,12 @@
   "description": "Toronto software engineer focused on reliable backend and full-stack systems, with 16 months of experience at Zebra Technologies.",
   "url": "https://shaibalmuhtadee.com",
   "locale": "en_CA",
+  "socialImage": {
+    "path": "/images/shaibal-muhtadee-og.png",
+    "alt": "Shaibal Muhtadee, Software Engineer — Backend and Full-Stack",
+    "width": 1200,
+    "height": 630
+  },
   "social": {
     "linkedin": "https://www.linkedin.com/in/shaibalmuhtadee",
     "github": "https://github.com/shaibalmuhtadee"
@@ -38,10 +45,8 @@
         "TypeScript",
         "C++",
         "FastAPI",
-        "Flask",
         "Node.js",
-        "REST APIs",
-        "WebSockets"
+        "REST APIs"
       ]
     },
     {
@@ -60,8 +65,7 @@
         "MongoDB",
         "Redis",
         "SQLite",
-        "Vector embeddings",
-        "Semantic search"
+        "Vector embeddings"
       ]
     }
   ],

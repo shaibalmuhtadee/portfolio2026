@@ -16,6 +16,7 @@ export const siteSchema = z
     role: text,
     headline: z.tuple([text, text]),
     location: text,
+    eligibilitySummary: text,
     availability: text,
     workAuthorization: text,
     supportingCopy: text,
@@ -23,6 +24,16 @@ export const siteSchema = z
     description: text,
     url: httpsUrl,
     locale: z.string().regex(/^[a-z]{2}_[A-Z]{2}$/, 'Use a locale such as en_CA.'),
+    socialImage: z
+      .object({
+        path: z
+          .string()
+          .regex(/^\/images\/[a-z0-9][a-z0-9._-]*\.png$/, 'Use a local PNG under /images/.'),
+        alt: text,
+        width: z.literal(1200),
+        height: z.literal(630),
+      })
+      .strict(),
     social: z
       .object({
         linkedin: httpsUrl,

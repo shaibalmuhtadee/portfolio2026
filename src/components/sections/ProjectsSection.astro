@@ -7,8 +7,15 @@ type Props = PortfolioSectionProps;
 const { section, content } = Astro.props;
 ---
 
-<section id={section.id} class="evidence__section" aria-labelledby={`${section.id}-title`}>
+<section
+  id={section.id}
+  class="evidence__section"
+  aria-labelledby={`${section.id}-title`}
+>
   <h2 id={`${section.id}-title`}>{section.label}</h2>
+  <p class="private-note private-note--lead">
+    Source code and demos are private; descriptions are limited to publishable work.
+  </p>
 
   <div class="project-list">
     {
@@ -27,7 +34,7 @@ const { section, content } = Astro.props;
             <div>
               <p class="project-entry__summary">{data.summary}</p>
               <p class="project-entry__contribution">
-                <strong>Contribution.</strong> {data.contribution}
+                <strong class="proof-label">Contribution.</strong> {data.contribution}
               </p>
             </div>
             <div>
@@ -37,7 +44,9 @@ const { section, content } = Astro.props;
                 ))}
               </ul>
               <p class="project-entry__evidence">
-                <strong>{data.supportedOutcome ? 'Evidence.' : 'Status.'}</strong>{' '}
+                <strong class="proof-label">
+                  {data.supportedOutcome ? 'Evidence.' : 'Status.'}
+                </strong>{' '}
                 {data.supportedOutcome ?? data.statusNote}
               </p>
             </div>
@@ -65,8 +74,4 @@ const { section, content } = Astro.props;
       </div>
     )
   }
-
-  <p class="private-note">
-    Source code and demos are private; descriptions are limited to publishable work.
-  </p>
 </section>

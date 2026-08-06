@@ -17,5 +17,6 @@ if (!current && !end) {
 <span class="date-range">
   <time datetime={start}>{formatMonth(start)}</time>
   <span aria-hidden="true">—</span>
+  <span class="visually-hidden">to</span>
   {current ? <span>Present</span> : <time datetime={end}>{formatMonth(end!)}</time>}
 </span>

@@ -22,17 +22,6 @@ const { site, experienceHref } = Astro.props;
   </h1>
   <p class="identity__intro">{site.supportingCopy}</p>
 
-  <ul class="identity__facts" aria-label="Location and availability">
-    <li>
-      <MapPin aria-hidden="true" size={21} stroke-width={2} />
-      <span>{site.location}</span>
-    </li>
-    <li>
-      <BriefcaseBusiness aria-hidden="true" size={21} stroke-width={2} />
-      <span>Open to full-time software engineering roles</span>
-    </li>
-  </ul>
-
   {
     experienceHref && (
       <a class="primary-action" href={experienceHref}>
@@ -41,6 +30,17 @@ const { site, experienceHref } = Astro.props;
       </a>
     )
   }
+
+  <ul class="identity__facts" aria-label="Location and availability">
+    <li>
+      <MapPin aria-hidden="true" size={21} stroke-width={2} />
+      <span>{site.location}</span>
+    </li>
+    <li>
+      <BriefcaseBusiness aria-hidden="true" size={21} stroke-width={2} />
+      <span>{site.eligibilitySummary}</span>
+    </li>
+  </ul>
 
   <nav class="identity__social" aria-label="Professional profiles">
     <a href={site.social.linkedin}>

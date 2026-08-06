@@ -13,15 +13,46 @@ const {
   canonicalPath = Astro.url.pathname,
 } = Astro.props;
 const canonical = new URL(canonicalPath, site.url).href;
+const socialImage = new URL(site.socialImage.path, site.url).href;
+const almaMater = site.education[0];
+if (!almaMater) throw new Error('At least one education entry is required for structured data.');
+const structuredData = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${canonical}#profile-page`,
+  url: canonical,
+  name: title,
+  description,
+  mainEntity: {
+    '@type': 'Person',
+    '@id': `${site.url}/#person`,
+    name: site.name,
+    url: `${site.url}/`,
+    jobTitle: 'Software Engineer',
+    description: site.description,
+    homeLocation: {
+      '@type': 'Place',
+      name: site.location,
+    },
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: almaMater.institution,
+    },
+    sameAs: [site.social.linkedin, site.social.github],
+    knowsAbout: site.skillGroups.flatMap((group) => group.skills),
+  },
+}).replaceAll('<', '\\u003c');
 ---
 
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="generator" content={Astro.generator} />
+<meta name="robots" content="index, follow" />
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="sitemap" href="/sitemap.xml" type="application/xml" />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content={site.name} />
@@ -29,8 +60,17 @@ const canonical = new URL(canonicalPath, site.url).href;
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:locale" content={site.locale} />
+<meta property="og:image" content={socialImage} />
+<meta property="og:image:secure_url" content={socialImage} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content={site.socialImage.width} />
+<meta property="og:image:height" content={site.socialImage.height} />
+<meta property="og:image:alt" content={site.socialImage.alt} />
 
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImage} />
+<meta name="twitter:image:alt" content={site.socialImage.alt} />
 <meta id="theme-color" name="theme-color" content="#f8f8f6" />
+<script type="application/ld+json" set:html={structuredData} />

@@ -17,13 +17,20 @@
     "validate:content": "node scripts/validate-content.mjs",
     "prebuild": "pnpm validate:content",
     "build": "astro build",
-    "postbuild": "pnpm verify:build",
+    "postbuild": "pnpm generate:sitemap && pnpm verify:build",
+    "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "verify:build": "node scripts/verify-build.mjs",
     "preview": "astro preview",
+    "precompress:dist": "node scripts/precompress-dist.mjs",
+    "serve:dist": "node scripts/serve-dist.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:links:external": "node scripts/check-links.mjs --external",
+    "test:lighthouse": "node scripts/run-lighthouse.mjs",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test:e2e": "pnpm build && playwright test",
+    "test:release": "pnpm build && pnpm check:links && playwright test && pnpm test:lighthouse",
     "quality": "pnpm format:check && pnpm lint && pnpm check && pnpm test:e2e"
   },
   "dependencies": {
@@ -46,5 +53,8 @@
     "prettier-plugin-astro": "0.14.1",
     "typescript": "6.0.3",
     "typescript-eslint": "8.66.0"
-  }
+  },
+  "workspaces": [
+    "."
+  ]
 }

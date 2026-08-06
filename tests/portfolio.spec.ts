@@ -17,6 +17,11 @@ test('renders verified identity, metadata, and content', async ({ page }) => {
   ).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Zebra Technologies' })).toBeVisible();
   await expect(page.getByText('more than 200 autonomous robots').first()).toBeVisible();
+  await expect(
+    page.getByText(
+      'Canada-wide; open to qualifying U.S. roles through TN status or employer-sponsored H-1B',
+    ),
+  ).toBeVisible();
 });
 
 test('renders every section and project in the approved order', async ({ page }) => {
@@ -51,6 +56,16 @@ test('renders every section and project in the approved order', async ({ page })
       { exact: true },
     ),
   ).toBeVisible();
+  expect(
+    await work.evaluate((section) => {
+      const note = section.querySelector('.private-note--lead');
+      const firstProject = section.querySelector('.project-entry');
+      if (!note || !firstProject) return false;
+      return Boolean(
+        note.compareDocumentPosition(firstProject) & Node.DOCUMENT_POSITION_FOLLOWING,
+      );
+    }),
+  ).toBe(true);
   await expect(work.getByRole('link')).toHaveCount(0);
   await expect(work.getByRole('button')).toHaveCount(0);
   await expect(work.locator('img, picture, video, audio, iframe, canvas, svg')).toHaveCount(0);
@@ -117,6 +132,7 @@ test('persists a manual theme choice', async ({ browser }) => {
   await toggle.click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
   await expect(page.getByRole('button', { name: 'Dark mode' })).toBeVisible();
+  await expect(page.locator('[data-theme-status]')).toHaveText('Light theme active');
 
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');

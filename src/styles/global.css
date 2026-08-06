@@ -15,6 +15,8 @@ html {
 body {
   min-block-size: 100vh;
   margin: 0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
   color: var(--color-text);
   background: var(--color-page);
   font-family: var(--font-sans);
@@ -22,11 +24,6 @@ body {
   font-weight: 450;
   line-height: 1.55;
   text-rendering: optimizeLegibility;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -49,10 +46,23 @@ a:hover {
   background: var(--color-accent-strong);
 }
 
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .skip-link {
   position: fixed;
-  inset-block-start: 0.75rem;
-  inset-inline-start: 0.75rem;
+  inset-block-start: calc(0.75rem + env(safe-area-inset-top));
+  inset-inline-start: calc(0.75rem + env(safe-area-inset-left));
   z-index: 100;
   padding: 0.65rem 0.85rem;
   color: var(--color-on-button);
@@ -65,18 +75,14 @@ a:hover {
   transform: translateY(0);
 }
 
+.evidence:focus:not(:focus-visible),
+.evidence__section:focus:not(:focus-visible) {
+  outline: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
   }
 }
 
