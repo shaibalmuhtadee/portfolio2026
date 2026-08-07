@@ -23,8 +23,9 @@
   },
   "about": {
     "paragraphs": [
-      "I'm a Toronto-based software engineer interested in backend and full-stack work where reliability, performance, and product usability meet. My experience spans authentication services, developer tools, data pipelines, AI-assisted interfaces, and performance-sensitive systems in Rust, TypeScript, Python, and C++.",
-      "I like tracing problems across system boundaries, from APIs and storage to the interface people use, and validating decisions with tests, profiling, and before-and-after measurements. I'm looking for a team where I can own meaningful work, learn from experienced engineers, and ship software used in real operations."
+      "Hi there! I’m Shaibal, a recent Computer Engineering graduate from the University of Toronto with 16 months of software engineering internship experience. I’m interested in backend and full-stack work where reliability, performance, and product usability meet. My experience spans authentication services, developer tools, data pipelines, AI-assisted interfaces, and performance-sensitive systems built with Rust, TypeScript, Python, and C++. I also enjoy frontend work and have built React and Flutter interfaces for internal tools and AI-assisted applications.",
+      "I like tracing problems across system boundaries, from APIs and storage to the interfaces people use, and validating decisions through tests, profiling, and measurable results. I’m looking for a team where I can own meaningful work, learn from experienced engineers, and ship software used in real operations.",
+      "Outside of work, you can usually find me running, playing soccer, reading fantasy novels, or experimenting with game development."
     ]
   },
   "education": [

@@ -2,7 +2,7 @@
   {
     "id": "experience",
     "label": "Experience",
-    "order": 1,
+    "order": 2,
     "enabled": true,
     "navVisible": false,
     "contentSource": "experience"
@@ -10,7 +10,7 @@
   {
     "id": "work",
     "label": "Selected work",
-    "order": 2,
+    "order": 3,
     "enabled": true,
     "navVisible": false,
     "contentSource": "project"
@@ -18,7 +18,7 @@
   {
     "id": "about",
     "label": "About",
-    "order": 3,
+    "order": 1,
     "enabled": true,
     "navVisible": false,
     "contentSource": "site"
