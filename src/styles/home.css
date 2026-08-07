@@ -320,7 +320,10 @@
   letter-spacing: -0.015em;
 }
 
-.additional-project,
+.additional-project {
+  padding-block: var(--space-4);
+}
+
 .education-entry {
   padding-block: var(--space-4);
   border-block: 1px solid var(--color-border);

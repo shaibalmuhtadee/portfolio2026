@@ -59,6 +59,9 @@ const { section, content } = Astro.props;
     content.additionalProjects.length > 0 && (
       <div class="additional-work">
         <h3>Additional work</h3>
+        <p class="private-note private-note--lead">
+          Additional work is not described in detail due to confidentiality, but I can discuss it in interviews.
+        </p>
         {content.additionalProjects.map(({ data }) => (
           <article class="additional-project">
             <div class="additional-project__heading">
