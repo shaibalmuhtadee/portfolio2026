@@ -163,7 +163,7 @@
 
 #education {
   border-block-start: 0;
-  padding-block-start: var(--space-6);
+  padding-block-start: var(--space-4);
 }
 
 .evidence__section > h2 {
