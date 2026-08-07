@@ -59,45 +59,8 @@ const { site, resumeHref } = Astro.props;
   </nav>
 
   <script>
-    (() => {
-      const navLinkSelector = '.identity__nav-link';
-      const sectionSelector = 'section[id]';
-
-      const setActiveLink = (id) => {
-        document.querySelectorAll(navLinkSelector).forEach((link) => {
-          const href = link.getAttribute('href');
-          if (href === `#${id}`) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
-      };
-
-      const sections = Array.from(document.querySelectorAll(sectionSelector)).filter((section) =>
-        document.querySelector(`a[href="#${section.id}"]`),
-      );
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) setActiveLink(entry.target.id);
-          });
-        },
-        { threshold: 0, rootMargin: '-80px 0px -60% 0px' },
-      );
-
-      sections.forEach((section) => observer.observe(section));
-
-      document.querySelectorAll(navLinkSelector).forEach((link) => {
-        link.addEventListener('click', () => {
-          const href = link.getAttribute('href');
-          if (href?.startsWith('#')) setActiveLink(href.slice(1));
-        });
-      });
-
-      setActiveLink(sections[0]?.id ?? '');
-    })();
+    import { initScrollspy } from '../../lib/nav-scrollspy';
+    initScrollspy();
   </script>
 
   <ul class="identity__facts" aria-label="Location and availability">
