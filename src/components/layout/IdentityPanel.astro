@@ -51,6 +51,7 @@ const { site, resumeHref } = Astro.props;
   </ul>
 
   <nav class="identity__social" aria-label="Professional profiles">
+    <ThemeToggle />
     <a href={site.social.linkedin}>
       <BrandIcon icon={siLinkedin} size={27} />
       <span>LinkedIn</span>
@@ -59,6 +60,5 @@ const { site, resumeHref } = Astro.props;
       <BrandIcon icon={siGithub} size={23} />
       <span>GitHub</span>
     </a>
-    <ThemeToggle />
   </nav>
 </header>

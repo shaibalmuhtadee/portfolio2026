@@ -5,7 +5,6 @@ import { Moon, Sun } from '@lucide/astro';
 <button class="theme-toggle" type="button" data-theme-toggle aria-label="Dark mode">
   <Moon class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true" size={18} />
   <Sun class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true" size={18} />
-  <span data-theme-label>Dark mode</span>
 </button>
 <span class="visually-hidden" data-theme-status aria-live="polite"></span>
 
@@ -13,12 +12,11 @@ import { Moon, Sun } from '@lucide/astro';
   (() => {
     const root = document.documentElement;
     const button = document.querySelector('[data-theme-toggle]');
-    const label = button?.querySelector('[data-theme-label]');
     const status = document.querySelector('[data-theme-status]');
     const colorMeta = document.querySelector('#theme-color');
     const media = window.matchMedia('(prefers-color-scheme: dark)');
 
-    if (!(button instanceof HTMLButtonElement) || !(label instanceof HTMLElement)) return;
+    if (!(button instanceof HTMLButtonElement)) return;
 
     const resolvedTheme = () => root.dataset.theme || (media.matches ? 'dark' : 'light');
 
@@ -30,7 +28,6 @@ import { Moon, Sun } from '@lucide/astro';
       root.style.colorScheme = activeTheme;
       button.dataset.targetTheme = targetTheme;
       button.setAttribute('aria-label', action);
-      label.textContent = action;
 
       if (colorMeta instanceof HTMLMetaElement) {
         colorMeta.content = activeTheme === 'dark' ? '#07131f' : '#f8f8f6';
@@ -65,8 +62,10 @@ import { Moon, Sun } from '@lucide/astro';
   .theme-toggle {
     display: none;
     min-block-size: 2.75rem;
+    block-size: 2.75rem;
+    inline-size: 2.75rem;
     align-items: center;
-    gap: 0.65rem;
+    justify-content: center;
     border: 1px solid var(--color-accent);
     border-radius: var(--radius-control);
     color: var(--color-accent-strong);
