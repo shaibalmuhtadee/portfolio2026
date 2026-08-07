@@ -40,62 +40,6 @@ const { site, resumeHref } = Astro.props;
   }
 
   <nav class="identity__nav">
-    <style>
-      .identity__nav-link {
-        display: flex;
-        align-items: center;
-        gap: var(--space-2);
-        padding: 0.35rem 0;
-        color: var(--color-muted);
-        text-decoration: none;
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: var(--step--1);
-        letter-spacing: 0.08em;
-        transition: color 250ms ease-in-out;
-      }
-
-      .identity__nav-link:hover,
-      .identity__nav-link:focus-visible {
-        color: var(--color-text);
-      }
-
-      .identity__nav-indicator {
-        display: block;
-        flex-shrink: 0;
-        inline-size: 2rem;
-        block-size: 1px;
-        background-color: var(--color-muted);
-        transition:
-          inline-size 250ms ease-in-out,
-          background-color 250ms ease-in-out;
-      }
-
-      .identity__nav-link:hover .identity__nav-indicator,
-      .identity__nav-link:focus-visible .identity__nav-indicator {
-        inline-size: 4rem;
-        background-color: var(--color-text);
-      }
-
-      .identity__nav-link.active {
-        color: var(--color-accent-strong);
-      }
-
-      .identity__nav-link.active .identity__nav-indicator {
-        inline-size: 4rem;
-        background-color: var(--color-accent-strong);
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .identity__nav-link {
-          transition: none;
-        }
-
-        .identity__nav-indicator {
-          transition: none;
-        }
-      }
-    </style>
     <a class="identity__nav-link" href="#about">
       <span class="identity__nav-indicator"></span>
       <span class="identity__nav-text">About</span>
@@ -116,11 +60,11 @@ const { site, resumeHref } = Astro.props;
 
   <script>
     (() => {
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('.identity__nav-link');
+      const navLinkSelector = '.identity__nav-link';
+      const sectionSelector = 'section[id]';
 
-      function setActiveLink(id: string) {
-        navLinks.forEach((link) => {
+      const setActiveLink = (id) => {
+        document.querySelectorAll(navLinkSelector).forEach((link) => {
           const href = link.getAttribute('href');
           if (href === `#${id}`) {
             link.classList.add('active');
@@ -128,30 +72,27 @@ const { site, resumeHref } = Astro.props;
             link.classList.remove('active');
           }
         });
-      }
+      };
+
+      const sections = Array.from(document.querySelectorAll(sectionSelector)).filter((section) =>
+        document.querySelector(`a[href="#${section.id}"]`),
+      );
 
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActiveLink(entry.target.id);
-            }
+            if (entry.isIntersecting) setActiveLink(entry.target.id);
           });
         },
-        {
-          threshold: 0,
-          rootMargin: '-80px 0px -60% 0px',
-        },
+        { threshold: 0, rootMargin: '-80px 0px -60% 0px' },
       );
 
       sections.forEach((section) => observer.observe(section));
 
-      navLinks.forEach((link) => {
+      document.querySelectorAll(navLinkSelector).forEach((link) => {
         link.addEventListener('click', () => {
           const href = link.getAttribute('href');
-          if (href && href.startsWith('#')) {
-            setActiveLink(href.slice(1));
-          }
+          if (href?.startsWith('#')) setActiveLink(href.slice(1));
         });
       });
 

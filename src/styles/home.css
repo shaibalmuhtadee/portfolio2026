@@ -621,6 +621,60 @@
     order: 4;
   }
 
+  .identity__nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0.35rem 0;
+    color: var(--color-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    transition: color 250ms ease-in-out;
+  }
+
+  .identity__nav-link:hover,
+  .identity__nav-link:focus-visible {
+    color: var(--color-text);
+  }
+
+  .identity__nav-indicator {
+    display: block;
+    flex-shrink: 0;
+    inline-size: 2rem;
+    block-size: 1px;
+    background-color: var(--color-muted);
+    transition: inline-size 250ms ease-in-out,
+      background-color 250ms ease-in-out;
+  }
+
+  .identity__nav-link:hover .identity__nav-indicator,
+  .identity__nav-link:focus-visible .identity__nav-indicator {
+    inline-size: 4rem;
+    background-color: var(--color-text);
+  }
+
+  .identity__nav-link.active {
+    color: var(--color-accent-strong);
+  }
+
+  .identity__nav-link.active .identity__nav-indicator {
+    inline-size: 4rem;
+    background-color: var(--color-accent-strong);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .identity__nav-link {
+      transition: none;
+    }
+
+    .identity__nav-indicator {
+      transition: none;
+    }
+  }
+
   .evidence {
     padding: 0 clamp(3.5rem, 5vw, 5rem) var(--space-7);
     border-block-start: 0;
