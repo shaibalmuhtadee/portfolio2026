@@ -1,14 +1,10 @@
 const NAV_LINK_SELECTOR = '.identity__nav-link';
 const SECTION_SELECTOR = 'section[id]';
+const ACTIVATION_OFFSET = 100;
 
 function setActiveLink(id: string) {
   document.querySelectorAll<HTMLElement>(NAV_LINK_SELECTOR).forEach((link) => {
-    const href = link.getAttribute('href');
-    if (href === `#${id}`) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
   });
 }
 
@@ -16,26 +12,36 @@ export function initScrollspy() {
   const sections = Array.from(
     document.querySelectorAll<HTMLElement>(SECTION_SELECTOR),
   ).filter((section) =>
-    document.querySelector(`a[href="#${section.id}"]`),
+    document.querySelector(`${NAV_LINK_SELECTOR}[href="#${section.id}"]`),
   );
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) setActiveLink(entry.target.id);
-      });
-    },
-    { threshold: 0, rootMargin: '-80px 0px -60% 0px' },
-  );
+  function updateActiveSection() {
+    if (!sections.length) return;
 
-  sections.forEach((section) => observer.observe(section));
+    const atBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 1;
 
-  document.querySelectorAll<HTMLElement>(NAV_LINK_SELECTOR).forEach((link) => {
-    link.addEventListener('click', () => {
-      const href = link.getAttribute('href');
-      if (href?.startsWith('#')) setActiveLink(href.slice(1));
-    });
-  });
+    if (atBottom) {
+      setActiveLink(sections.at(-1)!.id);
+      return;
+    }
 
-  setActiveLink(sections[0]?.id ?? '');
+    let activeSection = sections[0]!;
+
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= ACTIVATION_OFFSET) {
+        activeSection = section;
+      } else {
+        break;
+      }
+    }
+
+    setActiveLink(activeSection.id);
+  }
+
+  window.addEventListener('scroll', updateActiveSection, { passive: true });
+  window.addEventListener('resize', updateActiveSection);
+
+  updateActiveSection();
 }
