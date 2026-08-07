@@ -32,7 +32,7 @@
     "contentSource": "project"
   },
   {
-    "id": "profile",
+    "id": "skills",
     "label": "Skills",
     "order": 5,
     "enabled": true,

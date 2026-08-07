@@ -7,13 +7,13 @@ const expectedSources = {
   projects: 'project',
   about: 'site',
   education: 'site',
-  profile: 'site',
+  skills: 'site',
   contact: 'site',
 } as const;
 
 export const sectionSchema = z
   .object({
-    id: z.enum(['experience', 'projects', 'about', 'education', 'profile', 'contact']),
+    id: z.enum(['experience', 'projects', 'about', 'education', 'skills', 'contact']),
     label: z.string().trim().min(1),
     order: z.number().int().positive(),
     enabled: z.boolean(),
@@ -49,7 +49,7 @@ const implementedSections = new Set<SectionConfig['id']>([
   'projects',
   'about',
   'education',
-  'profile',
+  'skills',
   'contact',
 ]);
 

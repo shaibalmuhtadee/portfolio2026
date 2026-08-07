@@ -367,7 +367,7 @@
   margin: -1rem 0 var(--space-5);
 }
 
-.about-copy {
+.about {
   display: grid;
   gap: var(--space-4);
   max-inline-size: var(--text-measure);
@@ -375,7 +375,7 @@
   padding-block-end: var(--space-5);
 }
 
-.about-copy p {
+.about p {
   margin: 0;
   text-wrap: pretty;
 }
@@ -413,11 +413,11 @@
   color: var(--color-accent);
 }
 
-.profile-details {
+.skills-details {
   margin-block-start: var(--space-6);
 }
 
-.profile-details > :not(:first-child) {
+.skills-details > :not(:first-child) {
   margin-block-start: var(--space-6);
 }
 

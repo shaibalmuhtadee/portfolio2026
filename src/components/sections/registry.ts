@@ -5,7 +5,7 @@ import AboutSection from './AboutSection.astro';
 import ContactSection from './ContactSection.astro';
 import EducationSection from './EducationSection.astro';
 import ExperienceSection from './ExperienceSection.astro';
-import ProfileSection from './ProfileSection.astro';
+import SkillsSection from './SkillsSection.astro';
 import ProjectsSection from './ProjectsSection.astro';
 
 export const sectionRegistry = {
@@ -13,6 +13,6 @@ export const sectionRegistry = {
   projects: ProjectsSection,
   about: AboutSection,
   education: EducationSection,
-  profile: ProfileSection,
+  skills: SkillsSection,
   contact: ContactSection,
 } satisfies Record<SectionConfig['id'], AstroComponentFactory>;
