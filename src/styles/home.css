@@ -376,8 +376,10 @@
 }
 
 .profile-details {
-  display: grid;
-  gap: var(--space-6);
+  margin-block-start: var(--space-6);
+}
+
+.profile-details > :not(:first-child) {
   margin-block-start: var(--space-6);
 }
 
@@ -578,11 +580,9 @@
     padding-block: clamp(3.5rem, 4vw, 4rem);
   }
 
-  .profile-details {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: var(--space-6);
-  }
 }
+
+@media (min-width: 75rem) {
 
 @media (min-width: 75rem) {
   .experience-entry__highlights {

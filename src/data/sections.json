@@ -1,11 +1,19 @@
 [
   {
-    "id": "experience",
-    "label": "Experience",
-    "order": 2,
+    "id": "about",
+    "label": "About",
+    "order": 1,
     "enabled": true,
     "navVisible": false,
-    "contentSource": "experience"
+    "contentSource": "site"
+  },
+  {
+    "id": "profile",
+    "label": "Education and skills",
+    "order": 4,
+    "enabled": true,
+    "navVisible": false,
+    "contentSource": "site"
   },
   {
     "id": "work",
@@ -16,17 +24,17 @@
     "contentSource": "project"
   },
   {
-    "id": "about",
-    "label": "About",
-    "order": 1,
+    "id": "experience",
+    "label": "Experience",
+    "order": 2,
     "enabled": true,
     "navVisible": false,
-    "contentSource": "site"
+    "contentSource": "experience"
   },
   {
     "id": "contact",
     "label": "Contact",
-    "order": 4,
+    "order": 5,
     "enabled": true,
     "navVisible": false,
     "contentSource": "site"

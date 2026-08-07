@@ -24,8 +24,6 @@ const { section, content } = Astro.props;
           <header class="project-entry__heading">
             <h3>{data.title}</h3>
             <p class="project-entry__meta">
-              <span>Private project</span>
-              <span aria-hidden="true">·</span>
               <DateRange start={data.start} end={data.end} current={data.current} />
             </p>
           </header>
