@@ -1,5 +1,4 @@
 ---
-import DateRange from '../ui/DateRange.astro';
 import type { PortfolioSectionProps } from './types';
 
 type Props = PortfolioSectionProps;
@@ -15,25 +14,7 @@ const { section, site } = Astro.props;
   <h2 id={`${section.id}-title`}>{section.label}</h2>
 
   <div class="profile-details">
-    <div class="education-block">
-      <h3>Education</h3>
-      {
-        site.education.map((entry) => (
-          <article class="education-entry">
-            <h4>{entry.institution}</h4>
-            <p>{entry.degree}</p>
-            <p class="education-entry__meta">
-              <span>{entry.location}</span>
-              <span aria-hidden="true">·</span>
-              <DateRange start={entry.start} end={entry.end} />
-            </p>
-          </article>
-        ))
-      }
-    </div>
-
     <div class="skills-block">
-      <h3>Selected skills</h3>
       <dl class="skill-groups">
         {
           site.skillGroups.map((group) => (

@@ -8,33 +8,41 @@
     "contentSource": "site"
   },
   {
-    "id": "profile",
-    "label": "Education and skills",
-    "order": 4,
+    "id": "education",
+    "label": "Education",
+    "order": 2,
     "enabled": true,
     "navVisible": false,
     "contentSource": "site"
   },
   {
-    "id": "work",
-    "label": "Selected work",
-    "order": 3,
-    "enabled": true,
-    "navVisible": false,
-    "contentSource": "project"
-  },
-  {
     "id": "experience",
     "label": "Experience",
-    "order": 2,
+    "order": 3,
     "enabled": true,
     "navVisible": false,
     "contentSource": "experience"
   },
   {
+    "id": "projects",
+    "label": "Projects",
+    "order": 4,
+    "enabled": true,
+    "navVisible": false,
+    "contentSource": "project"
+  },
+  {
+    "id": "profile",
+    "label": "Skills",
+    "order": 5,
+    "enabled": true,
+    "navVisible": false,
+    "contentSource": "site"
+  },
+  {
     "id": "contact",
     "label": "Contact",
-    "order": 5,
+    "order": 6,
     "enabled": true,
     "navVisible": false,
     "contentSource": "site"
