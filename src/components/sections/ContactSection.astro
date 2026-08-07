@@ -1,8 +1,5 @@
 ---
 import { ArrowUpRight } from '@lucide/astro';
-import { siGithub } from 'simple-icons';
-
-import BrandIcon from '../ui/BrandIcon.astro';
 import type { PortfolioSectionProps } from './types';
 
 type Props = PortfolioSectionProps;
@@ -26,10 +23,6 @@ const { section, site } = Astro.props;
       <span class="linkedin-mark" aria-hidden="true">in</span>
       <span>Connect on LinkedIn</span>
       <ArrowUpRight aria-hidden="true" size={20} stroke-width={2.2} />
-    </a>
-    <a class="contact-actions__secondary" href={site.social.github}>
-      <BrandIcon icon={siGithub} size={21} />
-      <span>View GitHub profile</span>
     </a>
   </div>
 </section>

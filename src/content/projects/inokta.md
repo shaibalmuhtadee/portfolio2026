@@ -7,7 +7,7 @@ current: false
 enabled: true
 order: 1
 featured: true
-contribution: Co-created and co-developed the document ingestion, retrieval, editable graph, and streamed AI interaction workflows with two collaborators.
+contribution: Built the core document ingestion, semantic retrieval, editable knowledge graph, and real-time AI interaction workflows alongside two collaborators.
 decisions:
   - Represented extracted knowledge as editable entities and relationships instead of treating model output as final prose.
   - Kept conversations session-scoped and streamed AI responses and tool activity over WebSockets.

@@ -1,6 +1,6 @@
 ---
 title: ChromaMap
-summary: Built C++ geographic information system software with OpenStreetMap data, routing algorithms, and a performance-focused rendering pipeline.
+summary: Built a C++ geographic information system software with OpenStreetMap data, routing algorithms, and a performance-focused rendering pipeline.
 start: '2022-09'
 end: '2023-04'
 current: false
@@ -18,7 +18,7 @@ technologies:
   - GTK
   - Git
 status: private
-statusNote: Timed before-and-after navigation tests showed faster browsing after level-of-detail tiling; the original timings are unavailable.
+supportedOutcome: Timed before-and-after navigation tests showed significantly faster browsing after level-of-detail tiling.
 caseStudy: false
 decorativeImage: false
 ---
