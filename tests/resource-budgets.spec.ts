@@ -69,7 +69,7 @@ for (const route of routes) {
       )[0] as PerformanceNavigationTiming;
       const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
       const quality = (
-        window as Window & {
+        window as unknown as Window & {
           __portfolioMetrics: { cls: number; lcpUrl: string; longTasks: number[] };
         }
       ).__portfolioMetrics;
