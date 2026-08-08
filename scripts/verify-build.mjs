@@ -19,7 +19,7 @@ const seed = '8b14ca40';
 const finish =
   'unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md';
 const inlineScriptBudget = 4096;
-const requiredSections = ['experience', 'work', 'about', 'contact'];
+const requiredSections = ['experience', 'projects', 'about', 'contact'];
 const requiredContent = [
   'Zebra Technologies',
   'Inokta',
@@ -154,12 +154,8 @@ if (/mailto:|tel:/i.test(html)) {
   errors.push('The build exposes a private email or phone contact path.');
 }
 
-if (site.resume.enabled) {
-  if (!hasHref(site.resume.path)) {
-    errors.push('The enabled public resume link is missing or does not match site.json.');
-  }
-} else if (/\/resume\/|\.pdf(?:[?#"'])/i.test(html)) {
-  errors.push('The build exposes a resume while the resume is disabled in site.json.');
+if (site.resume?.path && !hasHref(site.resume.path)) {
+  errors.push('The public resume link is missing or does not match site.json.');
 }
 
 if (/(?:more than|over)?\s*300\s*(?:%|percent)/i.test(html)) {

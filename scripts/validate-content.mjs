@@ -64,7 +64,7 @@ const siteConfigSchema = z
   .object({
     name: text,
     role: text,
-    headline: z.tuple([text, text]),
+    headline: text,
     location: text,
     availability: text,
     workAuthorization: text,
@@ -103,7 +103,6 @@ const siteConfigSchema = z
         height: z.literal(630),
       })
       .strict(),
-    headline: text,
     resume: z
       .object({
         path: z.string().regex(/^\/resume\/[a-z0-9][a-z0-9._-]*\.pdf$/),

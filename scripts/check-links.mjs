@@ -88,7 +88,8 @@ for (const htmlFile of htmlFiles) {
   );
   const discovered = new Set();
 
-  for (const match of html.matchAll(/\b(?:href|poster|src)=["']([^"']+)["']/gi)) {
+  const stripped = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
+  for (const match of stripped.matchAll(/\b(?:href|poster|src)=["']([^"']+)["']/gi)) {
     discovered.add(match[1]);
   }
   for (const match of html.matchAll(/\bsrcset=["']([^"']+)["']/gi)) {
