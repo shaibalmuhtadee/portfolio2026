@@ -23,10 +23,7 @@ test('publishes complete canonical, social, and crawler metadata', async ({ page
     'content',
     'summary_large_image',
   );
-  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
-    'content',
-    SOCIAL_IMAGE,
-  );
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', SOCIAL_IMAGE);
 });
 
 test('publishes privacy-safe ProfilePage and Person structured data', async ({ page }) => {
@@ -49,7 +46,9 @@ test('publishes privacy-safe ProfilePage and Person structured data', async ({ p
   expect(JSON.stringify(data)).not.toMatch(/email|telephone|mailto:|tel:/i);
 });
 
-test('serves the social image, robots file, and sitemap with valid content', async ({ request }) => {
+test('serves the social image, robots file, and sitemap with valid content', async ({
+  request,
+}) => {
   const imageResponse = await request.get('/images/shaibal-muhtadee-og.png');
   expect(imageResponse.ok()).toBe(true);
   expect(imageResponse.headers()['content-type']).toBe('image/png');

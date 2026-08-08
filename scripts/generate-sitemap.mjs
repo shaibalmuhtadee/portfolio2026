@@ -16,7 +16,8 @@ async function walk(directory) {
 }
 
 const rootStats = await stat(distRoot).catch(() => null);
-if (!rootStats?.isDirectory()) throw new Error('Run the production build before generating sitemap.xml.');
+if (!rootStats?.isDirectory())
+  throw new Error('Run the production build before generating sitemap.xml.');
 
 const htmlFiles = (await walk(distRoot)).filter((file) => file.endsWith('.html'));
 const urls = [];

@@ -38,8 +38,7 @@ const collectStructuredUrls = (value, urls) => {
     urls.add(url.href);
   } else if (Array.isArray(value)) {
     value.forEach((item) => collectStructuredUrls(item, urls));
-  }
-  else if (value && typeof value === 'object') {
+  } else if (value && typeof value === 'object') {
     Object.values(value).forEach((item) => collectStructuredUrls(item, urls));
   }
 };
@@ -169,8 +168,7 @@ if (checkExternal) {
       const result = await probe(url);
       if (result.inconclusive) {
         inconclusive.push(`${url} returned bot-protection status ${result.status}`);
-      }
-      else process.stdout.write(`External link reachable (${result.status}): ${url}\n`);
+      } else process.stdout.write(`External link reachable (${result.status}): ${url}\n`);
     } catch (error) {
       errors.push(`${url}: ${error.message}`);
     }

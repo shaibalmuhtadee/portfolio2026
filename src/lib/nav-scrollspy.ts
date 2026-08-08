@@ -9,18 +9,15 @@ function setActiveLink(id: string) {
 }
 
 export function initScrollspy() {
-  const sections = Array.from(
-    document.querySelectorAll<HTMLElement>(SECTION_SELECTOR),
-  ).filter((section) =>
-    document.querySelector(`${NAV_LINK_SELECTOR}[href="#${section.id}"]`),
+  const sections = Array.from(document.querySelectorAll<HTMLElement>(SECTION_SELECTOR)).filter(
+    (section) => document.querySelector(`${NAV_LINK_SELECTOR}[href="#${section.id}"]`),
   );
 
   function updateActiveSection() {
     if (!sections.length) return;
 
     const atBottom =
-      window.innerHeight + window.scrollY >=
-      document.documentElement.scrollHeight - 1;
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1;
 
     if (atBottom) {
       setActiveLink(sections.at(-1)!.id);

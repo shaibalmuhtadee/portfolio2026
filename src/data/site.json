@@ -40,15 +40,7 @@
   "skillGroups": [
     {
       "label": "Backend and systems",
-      "skills": [
-        "Rust",
-        "Python",
-        "TypeScript",
-        "C++",
-        "FastAPI",
-        "Node.js",
-        "REST APIs"
-      ]
+      "skills": ["Rust", "Python", "TypeScript", "C++", "FastAPI", "Node.js", "REST APIs"]
     },
     {
       "label": "Product and web",
@@ -60,14 +52,7 @@
     },
     {
       "label": "Data and AI",
-      "skills": [
-        "LangGraph",
-        "ChromaDB",
-        "MongoDB",
-        "Redis",
-        "SQLite",
-        "Vector embeddings"
-      ]
+      "skills": ["LangGraph", "ChromaDB", "MongoDB", "Redis", "SQLite", "Vector embeddings"]
     }
   ],
   "contact": {

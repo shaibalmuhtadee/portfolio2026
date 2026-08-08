@@ -61,9 +61,7 @@ test('renders every section and project in the approved order', async ({ page })
       const note = section.querySelector('.private-note--lead');
       const firstProject = section.querySelector('.project-entry');
       if (!note || !firstProject) return false;
-      return Boolean(
-        note.compareDocumentPosition(firstProject) & Node.DOCUMENT_POSITION_FOLLOWING,
-      );
+      return Boolean(note.compareDocumentPosition(firstProject) & Node.DOCUMENT_POSITION_FOLLOWING);
     }),
   ).toBe(true);
   await expect(work.getByRole('link')).toHaveCount(0);

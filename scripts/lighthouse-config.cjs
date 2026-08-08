@@ -2,19 +2,10 @@ const assertions = {
   'categories:performance': ['error', { minScore: 0.95, aggregationMethod: 'median' }],
   'categories:accessibility': ['error', { minScore: 1, aggregationMethod: 'median' }],
   'categories:seo': ['error', { minScore: 1, aggregationMethod: 'median' }],
-  'largest-contentful-paint': [
-    'error',
-    { maxNumericValue: 2000, aggregationMethod: 'median' },
-  ],
-  'first-contentful-paint': [
-    'error',
-    { maxNumericValue: 1500, aggregationMethod: 'median' },
-  ],
+  'largest-contentful-paint': ['error', { maxNumericValue: 2000, aggregationMethod: 'median' }],
+  'first-contentful-paint': ['error', { maxNumericValue: 1500, aggregationMethod: 'median' }],
   'total-blocking-time': ['error', { maxNumericValue: 100, aggregationMethod: 'median' }],
-  'cumulative-layout-shift': [
-    'error',
-    { maxNumericValue: 0.05, aggregationMethod: 'median' },
-  ],
+  'cumulative-layout-shift': ['error', { maxNumericValue: 0.05, aggregationMethod: 'median' }],
   'long-tasks': ['error', { maxLength: 0, aggregationMethod: 'median' }],
   'resource-summary:total:size': [
     'error',
@@ -40,10 +31,7 @@ const assertions = {
     'error',
     { maxNumericValue: 200 * 1024, aggregationMethod: 'median' },
   ],
-  'resource-summary:total:count': [
-    'error',
-    { maxNumericValue: 25, aggregationMethod: 'median' },
-  ],
+  'resource-summary:total:count': ['error', { maxNumericValue: 25, aggregationMethod: 'median' }],
   'resource-summary:third-party:count': [
     'error',
     { maxNumericValue: 0, aggregationMethod: 'median' },

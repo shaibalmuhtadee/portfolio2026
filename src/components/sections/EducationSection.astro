@@ -7,11 +7,7 @@ type Props = PortfolioSectionProps;
 const { section, site } = Astro.props;
 ---
 
-<section
-  id={section.id}
-  class="evidence__section"
-  aria-labelledby={`${section.id}-title`}
->
+<section id={section.id} class="evidence__section" aria-labelledby={`${section.id}-title`}>
   <h2 id={`${section.id}-title`}>{section.label}</h2>
 
   <div class="education-block">

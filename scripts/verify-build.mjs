@@ -85,9 +85,7 @@ for (const metadata of requiredMetadata) {
 }
 
 const jsonLdMatches = [
-  ...html.matchAll(
-    /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi,
-  ),
+  ...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi),
 ];
 
 if (jsonLdMatches.length !== 1) {

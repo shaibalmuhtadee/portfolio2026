@@ -22,8 +22,7 @@ const discoverRoutes = (directory: string, prefix = ''): string[] => {
     const relative = path.posix.join(prefix, entry.name);
     if (entry.isDirectory()) {
       routes.push(...discoverRoutes(path.join(directory, entry.name), relative));
-    }
-    else if (entry.name === 'index.html') routes.push(`/${prefix}`.replace(/\/$/, '') || '/');
+    } else if (entry.name === 'index.html') routes.push(`/${prefix}`.replace(/\/$/, '') || '/');
   }
   return routes;
 };
