@@ -20,7 +20,7 @@ export default [
   ...tseslint.configs.recommended,
   ...astro.configs['flat/recommended'],
   {
-    files: ['**/*.{js,mjs,ts,astro}'],
+    files: ['**/*.{js,mjs,cjs,ts,astro}'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -30,6 +30,7 @@ export default [
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
       'no-console': ['warn', { allow: ['warn', 'error'] }],
+      '@typescript-eslint/no-require-imports': 'off',
     },
   },
   {
