@@ -17,15 +17,17 @@ const httpsUrl = z.url().refine((value) => value.startsWith('https://'), {
 });
 const expectedSectionSources = {
   experience: 'experience',
-  work: 'project',
+  projects: 'project',
   about: 'site',
+  education: 'site',
+  skills: 'site',
   contact: 'site',
 };
-const implementedSections = new Set(['experience', 'work', 'about', 'contact']);
+const implementedSections = new Set(['experience', 'projects', 'about', 'education', 'skills', 'contact']);
 
 const sectionConfigSchema = z
   .object({
-    id: z.enum(['experience', 'work', 'about', 'contact']),
+    id: z.enum(['experience', 'projects', 'about', 'education', 'skills', 'contact']),
     label: text,
     order: z.number().int().positive(),
     enabled: z.boolean(),
@@ -85,15 +87,25 @@ const siteConfigSchema = z
       .min(1),
     skillGroups: z.array(z.object({ label: text, skills: z.array(text).min(1) }).strict()).min(1),
     contact: z.object({ heading: text, body: text }).strict(),
-    resume: z.discriminatedUnion('enabled', [
-      z.object({ enabled: z.literal(false) }).strict(),
-      z
-        .object({
-          enabled: z.literal(true),
-          path: z.string().regex(/^\/resume\/[a-z0-9][a-z0-9._-]*\.pdf$/),
-        })
-        .strict(),
-    ]),
+    eligibilitySummary: text,
+    socialImage: z
+      .object({
+        path: z
+          .string()
+          .regex(/^\/images\/[a-z0-9][a-z0-9._-]*\.png$/),
+        alt: text,
+        width: z.literal(1200),
+        height: z.literal(630),
+      })
+      .strict(),
+    headline: text,
+    resume: z
+      .object({
+        path: z
+          .string()
+          .regex(/^\/resume\/[a-z0-9][a-z0-9._-]*\.pdf$/),
+      })
+      .strict(),
   })
   .strict();
 
