@@ -27,7 +27,7 @@ test('passes axe in both themes at mobile and desktop widths', async ({ page, br
       await page.reload();
 
       const results = await new AxeBuilder({ page }).analyze();
-      const violations = results.violations.filter(v => v.id !== 'heading-order');
+      const violations = results.violations.filter((v) => v.id !== 'heading-order');
       expect(violations, `${theme} theme at ${viewport.width}px`).toEqual([]);
     }
   }

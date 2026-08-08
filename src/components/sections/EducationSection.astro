@@ -14,7 +14,7 @@ const { section, site } = Astro.props;
     {
       site.education.map((entry) => (
         <article class="education-entry">
-          <h4>{entry.institution}</h4>
+          <h3>{entry.institution}</h3>
           <p>{entry.degree}</p>
           <p class="education-entry__meta">
             <span>{entry.location}</span>

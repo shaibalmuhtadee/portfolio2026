@@ -63,7 +63,7 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium firefox webkit
 
       - name: Run browser tests
-        run: pnpm exec playwright test
+        run: pnpm exec playwright test --workers=3
 
       - name: Run mobile and desktop Lighthouse gates
         run: pnpm test:lighthouse

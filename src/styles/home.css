@@ -395,6 +395,7 @@
   padding-block-start: var(--space-2);
 }
 
+.education-entry h3,
 .education-entry h4 {
   margin: 0;
   font-size: var(--step-1);

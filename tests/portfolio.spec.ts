@@ -34,7 +34,9 @@ test('renders every section and project in the approved order', async ({ page })
 
   const projects = page.locator('#projects');
   for (const title of ['Inokta', 'Searchington', 'ChromaMap']) {
-    await expect(projects.getByRole('heading', { level: 3, name: title, exact: true })).toBeVisible();
+    await expect(
+      projects.getByRole('heading', { level: 3, name: title, exact: true }),
+    ).toBeVisible();
   }
   await expect(projects.getByRole('heading', { level: 4, name: 'GanttWise' })).toBeVisible();
 
@@ -185,7 +187,7 @@ test('has no automated accessibility violations or responsive horizontal overflo
   await page.goto('/');
 
   const results = await new AxeBuilder({ page }).analyze();
-  const violations = results.violations.filter(v => v.id !== 'heading-order');
+  const violations = results.violations.filter((v) => v.id !== 'heading-order');
   expect(violations).toEqual([]);
   await expect(page.locator('[data-theme-toggle]')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
