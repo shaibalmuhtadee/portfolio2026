@@ -23,7 +23,14 @@ const expectedSectionSources = {
   skills: 'site',
   contact: 'site',
 };
-const implementedSections = new Set(['experience', 'projects', 'about', 'education', 'skills', 'contact']);
+const implementedSections = new Set([
+  'experience',
+  'projects',
+  'about',
+  'education',
+  'skills',
+  'contact',
+]);
 
 const sectionConfigSchema = z
   .object({
@@ -90,9 +97,7 @@ const siteConfigSchema = z
     eligibilitySummary: text,
     socialImage: z
       .object({
-        path: z
-          .string()
-          .regex(/^\/images\/[a-z0-9][a-z0-9._-]*\.png$/),
+        path: z.string().regex(/^\/images\/[a-z0-9][a-z0-9._-]*\.png$/),
         alt: text,
         width: z.literal(1200),
         height: z.literal(630),
@@ -101,9 +106,7 @@ const siteConfigSchema = z
     headline: text,
     resume: z
       .object({
-        path: z
-          .string()
-          .regex(/^\/resume\/[a-z0-9][a-z0-9._-]*\.pdf$/),
+        path: z.string().regex(/^\/resume\/[a-z0-9][a-z0-9._-]*\.pdf$/),
       })
       .strict(),
   })
