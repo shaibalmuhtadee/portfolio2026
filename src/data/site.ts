@@ -82,7 +82,7 @@ export const siteSchema = z
       .object({
         path: z
           .string()
-          .regex(/^\/resume\/[a-z0-9][a-z0-9._-]*\.pdf$/, 'Use a local PDF under /resume/.'),
+          .regex(/^\/resume\/[a-zA-Z0-9][a-zA-Z0-9._-]*\.pdf$/, 'Use a local PDF under /resume/.'),
       })
       .strict(),
   })

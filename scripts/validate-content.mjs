@@ -105,7 +105,7 @@ const siteConfigSchema = z
       .strict(),
     resume: z
       .object({
-        path: z.string().regex(/^\/resume\/[a-z0-9][a-z0-9._-]*\.pdf$/),
+        path: z.string().regex(/^\/resume\/[a-zA-Z0-9][a-zA-Z0-9._-]*\.pdf$/),
       })
       .strict(),
   })
