@@ -5,8 +5,8 @@ start: '2024-09'
 end: '2024-12'
 current: false
 enabled: true
-order: 2
-featured: true
+order: 5
+featured: false
 contribution: Built the crawler, index, query path, persistence, hosting, and cache behavior.
 decisions:
   - Cached repeated query results in Redis instead of sending every request through the slower SQLite path.

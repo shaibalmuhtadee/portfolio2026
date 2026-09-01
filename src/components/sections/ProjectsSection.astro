@@ -28,7 +28,7 @@ const { section, content } = Astro.props;
             <div>
               <p class="project-entry__summary">{data.summary}</p>
               <p class="project-entry__contribution">
-                <strong class="proof-label">Contribution.</strong> {data.contribution}
+                <strong class="proof-label">{data.contributionLabel}.</strong> {data.contribution}
               </p>
             </div>
             <div>

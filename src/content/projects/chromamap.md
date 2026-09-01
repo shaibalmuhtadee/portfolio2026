@@ -7,6 +7,7 @@ current: false
 enabled: true
 order: 3
 featured: true
+contributionLabel: Scope
 contribution: Implemented routing heuristics and helped profile and improve map navigation and rendering behavior.
 decisions:
   - Added level-of-detail tiling so navigation rendered only the map detail needed for the current view.

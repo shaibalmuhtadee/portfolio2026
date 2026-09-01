@@ -5,7 +5,7 @@
   "location": "Toronto, Ontario",
   "eligibilitySummary": "Canada-wide; open to qualifying U.S. roles through TN status or employer-sponsored H-1B",
   "availability": "Open to full-time software engineering roles across Canada and select U.S. opportunities, with a preference for backend and full-stack work.",
-  "workAuthorization": "Canadian citizen based in Toronto — open to Canada-wide remote and U.S. roles; prepared to seek TN status for qualifying USMCA professional positions, or employer-sponsored H-1B.",
+  "workAuthorization": "Canadian citizen based in Toronto. Open to Canada-wide remote and U.S. roles; prepared to seek TN status for qualifying USMCA professional positions, or employer-sponsored H-1B.",
   "supportingCopy": "Toronto-based software engineer with 16 months at Zebra Technologies, including building authentication services that secured API access for more than 200 autonomous robots. I also co-developed an AI workspace that turns documents into editable entity graphs.",
   "title": "Shaibal Muhtadee | Portfolio",
   "description": "Developer Portfolio of Shaibal Muhtadee",
@@ -23,9 +23,9 @@
   },
   "about": {
     "paragraphs": [
-      "Hi there! I’m Shaibal, a recent Computer Engineering graduate from the University of Toronto with 16 months of software engineering internship experience. I’m interested in backend and full-stack work where reliability, performance, and product usability meet. My experience spans authentication services, developer tools, data pipelines, AI-assisted interfaces, and performance-sensitive systems built with Rust, TypeScript, Python, and C++. I also enjoy frontend work and have built React and Flutter interfaces for internal tools and AI-assisted applications.",
-      "I like tracing problems across system boundaries, from APIs and storage to the interfaces people use, and validating decisions through tests, profiling, and measurable results. I’m looking for a team where I can own meaningful work, learn from experienced engineers, and ship software used in real operations.",
-      "Outside of work, you can usually find me running, playing soccer, reading fantasy novels, or experimenting with game development."
+      "I'm Shaibal, a Computer Engineering graduate from the University of Toronto with 16 months of software engineering internship experience. I focus on backend and full-stack systems, with experience in authentication, developer tooling, data pipelines, and performance-sensitive software.",
+      "I like problems that cross layers. I trace how APIs, storage, and interfaces affect one another, then test my decisions through profiling, failure testing, and benchmarks. I'm looking for an early-career role where I can take ownership and learn from experienced engineers.",
+      "Outside of work, I run, play soccer, read fantasy novels, and experiment with game development."
     ]
   },
   "education": [
@@ -40,24 +40,42 @@
   "skillGroups": [
     {
       "label": "Backend and systems",
-      "skills": ["Rust", "Python", "TypeScript", "C++", "FastAPI", "Node.js", "REST APIs"]
+      "skills": [
+        "Rust",
+        "Go",
+        "Python",
+        "TypeScript",
+        "C++",
+        "FastAPI",
+        "Node.js",
+        "REST APIs",
+        "gRPC"
+      ]
     },
     {
       "label": "Product and web",
       "skills": ["React", "Next.js", "Flutter"]
     },
     {
-      "label": "Infrastructure",
-      "skills": ["Git", "Docker", "Kubernetes", "AWS"]
+      "label": "Infrastructure and observability",
+      "skills": ["Git", "Docker", "Kubernetes", "AWS", "Prometheus", "OpenTelemetry", "Grafana"]
     },
     {
       "label": "Data and AI",
-      "skills": ["LangGraph", "ChromaDB", "MongoDB", "Redis", "SQLite", "Vector embeddings"]
+      "skills": [
+        "PostgreSQL",
+        "LangGraph",
+        "ChromaDB",
+        "MongoDB",
+        "Redis",
+        "SQLite",
+        "Vector embeddings"
+      ]
     }
   ],
   "contact": {
-    "heading": "I'm looking for full-stack work where reliability matters.",
-    "body": "If your team is hiring a software engineer who can move from APIs and data to the product surface, I'd be glad to connect."
+    "heading": "I'm looking for backend or full-stack software engineering roles.",
+    "body": "If your team needs an engineer who can work across APIs, data, and user-facing features, I'd be glad to connect."
   },
   "resume": {
     "path": "/resume/Shaibal_Muhtadee_Resume.pdf"
