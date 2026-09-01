@@ -2,6 +2,15 @@
 
 This repository will contain my developer portfolio, focused on professional experience and engineering projects.
 
+## Portfolio preview
+
+<!--
+Upload the GIF as `portfolio-preview.gif` in the repository root, then remove
+the surrounding comment markers.
+
+![A short walkthrough of Shaibal Muhtadee's portfolio](./portfolio-preview.gif)
+-->
+
 ## Project status
 
 Phases 4 and 5 are implemented, including the responsive/accessibility pass, complete search and social metadata, structured data, generated crawler files, fixed gzip test server, served transfer budgets, browser matrix, and five-run mobile/desktop Lighthouse gates. The final release-gate run is blocked in the current Codex sandbox because its pnpm hardlinked package files cannot be opened; `BUILD.md` records the exact failures and required rerun. Phase 6 has not started. Shaibal will manually upload the sanitized, accessible public resume after Phase 6, and the existing private resume remains unpublished.
